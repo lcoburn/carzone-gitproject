@@ -1,0 +1,5 @@
+1) Create a new project folder
+2) Create a new virtual environment. We do this so as not to have to many packages installed. Basically we dont want more libraries than we need
+virtualenv --version
+virtualenv venv
+source venv/bin/activate
