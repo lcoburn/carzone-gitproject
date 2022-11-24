@@ -1,5 +1,68 @@
 1) Create a new project folder
+
 2) Create a new virtual environment. We do this so as not to have to many packages installed. Basically we dont want more libraries than we need
-virtualenv --version
-virtualenv venv
-source venv/bin/activate
+$ virtualenv --version
+$ virtualenv venv
+$ source venv/bin/activate
+Now we are in vistual environment
+$ deactivate leaves environment
+
+3) Create Django project
+$ django-admin startproject carzone .
+creates main project folder and manage.py script
+
+4) Run package on server
+$ python manage.py runserver
+
+5) Create app
+$ python manage.py startapp pages
+
+6) Add the app to the settings.py
+$ 'pages.app.PagesConfig'
+PagesConfig is a class that is in pages/apps.py
+
+7) Set up initial landing page (I find this bit tricky and difficult to understand)
+In pages create a file called urls.py. By default there is one existing in the admin pages. Here we will have to app a path to the url we are creating. 
+Append the new url to the pathurl list. This adds the urls.py in pages. In urls.py in pages import all views. Add to url pattern list a path to views.home. 
+In views.py, in the same folder add a function called home where we return a html called home.html. This html is stored in templates/pages.
+
+8) Create git repo
+Create repo oni github
+Navigate to folder
+$ git init
+$ git add -A
+$ git commit -m "First commit"
+$ git remote add origin https://github.com/lcoburn/carzone-gitproject.git 
+$ git push -u origin master
+$ git status
+$ git add -A
+$ git commit -m "Test commit"
+$ git push
+
+9) Create a gitignore file in the main repo directory
+Go to gitignore.io and type django and hit create
+Copy and paste the text to the gitignore
+
+10) Copy html template over 
+Project came with a directory full of html and css templates etc
+Simply copy over the index.html script content to home.html but nothing works because nothing is installed or setup
+Static files in django
+Create a subfolder called static in carzone directory
+Copy over css, html and image folders across
+Register static files in settings.py
+At the end of settings add
+$ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+$ STATICFILES_DIR = [
+    os.path.join(BASE_DIR, 'carzone/static'),
+]
+Then run manage.py to create a new static subfolder in root directory
+$ python manage.py collectstatic
+Note: To get help with these commands type
+$ python manage.py --help 
+
+Now go back to home.html to use static files
+Now type this into CSS library section
+$ <link rel="stylesheet" type="text/css" href="(% static 'css/bootstrap.min.css' %)">
+Add this to the top of the file (presumably the way we load css libraries ??)
+$ (% load static %)
+
