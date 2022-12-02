@@ -77,7 +77,7 @@ The same process is then repeated more or less from all of the pages in the nav 
 11) Create Database
 Go here for instructions: https://www.youtube.com/watch?v=QaZrWIvAFsA
 Ok so I had a lot of issues with this that I dont understand. Basically, I need to download pgadmin and postgres but then I need to install psql with
-brew. And then I need to configure the database in potgres so it has the correct port number or the expected port number. I think this is its own topic 
+brew. And then I need to configure the database in postgres so it has the correct port number or the expected port number. I think this is its own topic 
 and should be studied in isolation. It's really important to know how to set up a database
 
 open terminal and type:
@@ -117,7 +117,7 @@ Now go to http://127.0.0.1:8000/admin and enter login details
 
 13) Now create model in app. This will be to display the team.
 The data that is required is: photo, firstname, lastname, designation, facebook_link, google_plus_link, created_date
-Go to models.py in pages app
+Got to models.py in pages app
 Create class Teams with vars as above
 Because we are using pillow
 $ pip install pillow
@@ -130,18 +130,4 @@ Go to admin again and go to teams and add ateam member
 Can create a team mdemeber but need to set media settings in django
 If you add a class var in models and then start migration you will get an error. Select option 1 and add a string value. Easy
 Add a new class method called __str__ that return the first_name var and do migration
-
-14) Adding Team members from Database to Home page
-Add team names in admin
-Go to views and home method and import Team and get all pbject with team.objects.all and then create a dictionary with all data from table
-Then return render of home.html with data dictionary
-In home.html we are now free to use the data from the table.
-In the section related to the team create a for loop with {% for team in teams  %} and {% endfor %}
-Here the element from the db can be loaded with {{team.first_name}} etc. 
-
-15) Customizing admin table for teams
-So in admin.py we can add a bunch of out of the box functionality to make the list there clickable and searchable etc
-
-16)
-
 
